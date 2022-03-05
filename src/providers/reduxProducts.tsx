@@ -12,9 +12,9 @@ const defaultProduct = {
     price: 0.00
 };
 
-export const ReduxContext = React.createContext<Product | any>(defaultProduct);
+export const ProductContext = createContext<Product | any>(defaultProduct);
 
-export const ReduxProvider = (props:any) => {
+export const ReduxProductProvider = (props:any) => {
     const [product, setProducts] = useState([defaultProduct]);
 
 
@@ -24,8 +24,8 @@ export const ReduxProvider = (props:any) => {
 
 
     return (
-        <ReduxContext.Provider value={{ product }}>
+        <ProductContext.Provider value={{ product }}>
             {props.children}
-        </ReduxContext.Provider>
+        </ProductContext.Provider>
     )
 }

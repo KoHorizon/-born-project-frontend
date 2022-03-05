@@ -1,0 +1,16 @@
+.modalBasket-main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFF;
+    border: 1px black solid;
+    height: 75%;
+    width: 80%;
+    padding: 50px;
+    z-index: 1000;
+    border-radius: 50px
+    /* background-color: black; */
+}
+
+
