@@ -1,6 +1,7 @@
 import { AxiosPromise } from 'axios';
 import { ResponseProducts, Product } from '../types/product';
 import request from '../services/request';
+import { Order } from '../types/order';
 
 
 export const getProducts = (): AxiosPromise<ResponseProducts> =>
@@ -15,3 +16,15 @@ export const getProductsAndIngredient = (id: any) : AxiosPromise<any> =>
         url: `/product-has-ingredient/${id}`,
         method: 'GET'
     })
+
+
+
+export const postOrderHasIngredient = (data: any) : AxiosPromise<any> => 
+    request({
+        url: `/order-has-product`,
+        method: 'POST',
+        data
+    });
+
+
+// const {data} = await login(loginData);

@@ -3,8 +3,8 @@ import { getProducts } from '../api/product';
 import ProductAll from '../components/productAll';
 import ProductOfTheDay from '../components/productOfTheDay';
 import BasketModal from '../modals/basketModal';
-import { BasketContext } from '../providers/reduxBasket';
-import { ProductContext } from '../providers/reduxProducts';
+import { BasketContext } from '../providers/providerBasket';
+import { ProductContext } from '../providers/providerProducts';
 import { Product } from '../types/product';
 
 export default function MainPage() {
@@ -16,7 +16,7 @@ export default function MainPage() {
 
     useEffect(() => {
         try {
-            console.table(product);
+            // console.table(product);
         
         } catch (error) {
             console.log(error);

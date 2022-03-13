@@ -6,6 +6,7 @@ import '../styles/productAndIngredientData.css'
 interface IProps {
     product: Product,
     ingredient: Ingredient[]
+    ingredientToCustomize: Ingredient[]
 }
 
 
@@ -17,7 +18,7 @@ const STYLE_CONTAINER_PRODUCT_INGREDIENT_DATA = {
 }
 
 
-export default function ProductAndIngredientData({product, ingredient}: IProps) {
+export default function ProductAndIngredientData({product, ingredient, ingredientToCustomize}: IProps) {
 
 
   return (
@@ -35,9 +36,18 @@ export default function ProductAndIngredientData({product, ingredient}: IProps) 
                                     )
                                 })  
                         }
-                    </div>:
-                    <div>
-                        <span className='customize'>This is a Custom Product </span>
+                    </div>
+                    :
+                    <div className='product-ingredients'>
+                        <span className='customize'>Compose your customize product :</span>
+                            { 
+                                ingredientToCustomize.map(el => {
+                                    
+                                    return(
+                                        <p key={el.id}> - {el.name}</p>
+                                        )
+                                    })  
+                            }
                     </div>
             }
         </div>

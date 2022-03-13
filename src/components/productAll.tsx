@@ -19,7 +19,7 @@ export default function ProductAll(props: any) {
     let navigate = useNavigate()
 
     useEffect(() => {
-        console.log(props.product);   
+        // console.log(props.product);   
     },[])
 
 

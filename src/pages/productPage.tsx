@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductsAndIngredient } from '../api/product';
 import ProductAndIngredientData from '../components/product/productAndIngredientData';
-import { BasketContext } from '../providers/reduxBasket';
+import { BasketContext } from '../providers/providerBasket';
+import { IngredientContext } from '../providers/providerIngredient';
 import { Ingredient } from '../types/ingredient';
 import { Product } from '../types/product';
 import './styles/productPage.css';
@@ -33,16 +34,29 @@ const STYLE_CONTAINER_CUSTOMIZE = {
 export default function ProductPage(props: any) {
     const { id } = useParams();
     const { setOrderProducts } = useContext(BasketContext)
+    const { ingredientProvider } = useContext(IngredientContext)
 
+    let navigate = useNavigate()
 
     const [product, setProduct] = useState<Product>(defaultProduct)
     const [ingredients, setIngredient] = useState<Ingredient[]>([defaultIngredient])
     const [excludeIngredient, setExcludeIngredient] = useState<Ingredient[]>([])
 
+
+    const [ingredientToCustomize, setIngredientToCustomize] = useState<Ingredient[]>([])
+
+
+
     const orderObject = {
         email: null,
         product: product,
         exclude_ingredients: excludeIngredient
+    }
+
+    const orderObjectCustomize = {
+        email: null,
+        product: product,
+        ingredients: ingredientToCustomize
     }
 
     useEffect(() => {
@@ -51,24 +65,48 @@ export default function ProductPage(props: any) {
             setIngredient(res.data.response.ingredients)
             // console.log(res.data.response.ingredients);
         })
+
+        // console.log(ingredientProvider);
+        
+
     },[])
 
+    useEffect(() => {
+        console.log(ingredientToCustomize);
 
+    },[ingredientToCustomize])
 
     const createExcludeForProduct = async (ingredient: Ingredient) => {
-        if(excludeIngredient.length < ingredients.length ) {
+        if(ingredients.length > 1 && excludeIngredient.length < ingredients.length ) {
             setIngredient((items) => items.filter(item => item.id !== ingredient.id));
             setExcludeIngredient(dataIngredient => [...dataIngredient, ingredient]);
         }  
         
     }
 
-    const createCustomizeProduct = () => {
+    const createCustomizeProduct = async (ingredient: Ingredient) => {
+        if (ingredientToCustomize.length == ingredientProvider.length) return
+
+        for await (const customizeIngredient of ingredientToCustomize) {
+            if(customizeIngredient.id === ingredient.id) return;            
+        }
         
+        setIngredientToCustomize(dataIngredient => [...dataIngredient, ingredient]);
     }
 
-    const handleSubmitToBasket = () => {        
-        setOrderProducts(orderObject)
+    const handleSubmitToBasket = (custom: any) => {  
+        switch(custom) {
+            case false:
+                setOrderProducts(orderObject)
+                break;
+            case true:
+                if (ingredientToCustomize.length === 0) return;
+                setOrderProducts(orderObjectCustomize)
+                break;
+                    // setOrderProducts(orderObjectCustomize)
+                    
+                }
+        navigate('/test')
     }
 
 
@@ -76,7 +114,8 @@ export default function ProductPage(props: any) {
   return ( 
     <>
         <p>ProductPage</p>
-        <ProductAndIngredientData product={product} ingredient={ingredients} />
+        <button onClick={() => navigate('/test')}>Go back</button>
+        <ProductAndIngredientData product={product} ingredient={ingredients} ingredientToCustomize={ingredientToCustomize}/>
         <div className='separator'>
             <span>Personnaliser</span>
             <div className='separator-line'></div>
@@ -94,10 +133,18 @@ export default function ProductPage(props: any) {
                         )
                     })
                 :
-                <p>ddd</p>
+                ingredientProvider.map((ingredientAll: any) => {
+                    return (
+                        <div key={ingredientAll.id} className='exclude-ingredient'>
+                                <p>{ingredientAll.name}</p>
+                                <span onClick={() => createCustomizeProduct(ingredientAll)}> K </span>
+                        </div>
+                    )
+                })
             }
         </div>
-        <button onClick={() => handleSubmitToBasket()}>Envoyer au panier</button>
+        
+        <button onClick={() => handleSubmitToBasket(product.custom)}>Envoyer au panier</button>
 
     </>
   ) 

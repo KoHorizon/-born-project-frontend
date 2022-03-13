@@ -1,5 +1,9 @@
 .modalBasket-main {
+    
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -14,3 +18,52 @@
 }
 
 
+.modalBasket-order {
+}
+.modalBasket-productData {
+    display: flex;
+    justify-content: space-between;
+}
+.modalBasket-oderChildren {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.modalBasket-excludedIngredient {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+.modalBasket-excludedIngredient-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.modalBasket-excludedIngredient-content> p {
+    margin: 0 10px 0 10px;
+    border: 2px solid red;
+    padding: 10px;
+}
+
+.modalBasket-finalPrice {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+}
+
+.order-modalOrder{
+    right: 0;
+    width: 30%;
+    height: 50px;
+}
+
+
+.clode-modalOrder {
+    top: 20px;
+    position: absolute;
+}

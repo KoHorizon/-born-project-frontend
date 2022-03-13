@@ -7,3 +7,7 @@ export type Ingredient = {
 }
 
 
+export type ResponseIngredient = {
+    status: number,
+    ingredient: Ingredient[]
+}
