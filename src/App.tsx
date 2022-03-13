@@ -7,6 +7,7 @@ import { ProtectedRoute } from './services/protectedRoute'
 import MainPage from './pages/mainPage'
 import { ReduxProductProvider } from './providers/reduxProducts'
 import { ReduxBasketProvider } from './providers/reduxBasket'
+import ProductPage from './pages/productPage'
 
 function App() {
 
@@ -15,10 +16,11 @@ function App() {
       <ReduxBasketProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<LoginPage/>} > </Route>
+            <Route path="/login" element={<LoginPage/>} /> 
 
             <Route element={<ProtectedRoute/>}> 
-                  <Route path="/test" element={<MainPage/>} > </Route>
+                  <Route path="/test" element={<MainPage/>} /> 
+                  <Route path="details/product/:id" element={<ProductPage/>} />
             </Route>
           </Routes>
         </BrowserRouter>
@@ -26,5 +28,4 @@ function App() {
     </ReduxProductProvider>
   )
 }
-
 export default App

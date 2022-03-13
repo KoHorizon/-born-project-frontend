@@ -1,0 +1,39 @@
+.separator {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    justify-content: center;
+}
+
+.separator > span {
+    font-size: 40px;
+    letter-spacing: 2px;
+}
+
+.separator-line {
+    margin-top: 10px;
+    margin-left: 30px;
+    height: 3px;
+    width: 70%;
+    background-color: black;
+}
+
+.exclude-ingredient > p{
+    padding: 10px;
+    font-size: 25px;
+
+}
+
+.exclude-ingredient > span {
+    font-size: 25px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.exclude-ingredient {
+    padding: 10px;
+    border: 2px solid black;
+    margin: 10px;
+}

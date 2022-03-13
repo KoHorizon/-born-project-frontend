@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { getProducts } from '../api/product';
+import ProductAll from '../components/productAll';
 import ProductOfTheDay from '../components/productOfTheDay';
 import BasketModal from '../modals/basketModal';
 import { BasketContext } from '../providers/reduxBasket';
@@ -15,7 +16,7 @@ export default function MainPage() {
 
     useEffect(() => {
         try {
-            // console.table(product);
+            console.table(product);
         
         } catch (error) {
             console.log(error);
@@ -25,18 +26,20 @@ export default function MainPage() {
 
     return (
         <div>
-            { 
-                product.
-                filter((elementToFilter: Product) => elementToFilter.availability === true )
-                .map((elementAvailable:Product) => {
-                    return(
-                        <ProductOfTheDay key={elementAvailable.id} available={elementAvailable}/>
-                        // <p key={elementAvailable.id}>{elementAvailable.name}</p>
-                    )
-                })
-            }
+            <ProductAll product={product}   />
             <button onClick={() => setIsOpen(true)}>OPEN</button>
             <BasketModal /> 
         </div>
     );
 }
+
+
+
+// product.
+//          filter((productToFilter: Product) => productToFilter.availability === true )
+//          .map((productAvailable:Product) => {
+//             return(
+//                 <ProductOfTheDay key={productAvailable.id} available={productAvailable}/>
+//                 // <p key={elementAvailable.id}>{elementAvailable.name}</p>
+//             )
+//          })

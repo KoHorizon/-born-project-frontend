@@ -19,8 +19,8 @@ export const ReduxProductProvider = (props:any) => {
 
 
     useEffect(() => {
-        getProducts().then((res) => setProducts(res.data.product));        
-    },[])
+        getProducts().then((res) => setProducts(res.data.product));   
+},[])
 
 
     return (

@@ -1,0 +1,30 @@
+.ingredient {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: -50px;
+    margin-top: -20px;
+    flex-direction: column;
+    justify-content: center;
+}
+.product-ingredients > span {
+    font-size: 24px;
+    letter-spacing: 4px;
+}
+.product-ingredients > p{
+    padding-top: 6px;
+    margin-left: 20px;
+    letter-spacing: 2px;
+
+}
+
+.image-product {
+    background-color: black;
+    width: 40%;
+    height: 300px;
+    margin-top: 10px;
+}
+
+.customize {
+    font-size: 25px;
+}

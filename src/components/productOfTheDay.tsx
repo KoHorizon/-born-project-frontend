@@ -5,8 +5,8 @@ const STYLE_TODAY_PRODUCT = {
     marginTop: '10px',
     padding: '20px'
 }
-export default function ProductOfTheDay(props:any) {
-
+export default function ProductOfTheDay(props: any) {
+    
     useEffect(() => {
         // console.table(props.available);
     },[])
@@ -18,6 +18,7 @@ export default function ProductOfTheDay(props:any) {
 
 
     return (
+        
         <div style={STYLE_TODAY_PRODUCT}>
             <p>{props.available.id}</p>
             <button onClick={() => addProductToBasketHandler(props.available)}>Add this product to basked</button>
