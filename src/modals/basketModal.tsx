@@ -3,6 +3,7 @@ import { BasketContext } from '../providers/providerBasket'
 import ReactDOM  from 'react-dom';
 import './styles/basketModal.css'
 import { postOrderHasIngredient } from '../api/product';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,16 +11,22 @@ import { postOrderHasIngredient } from '../api/product';
 
 export default function BasketModal() {
 
-    const { isOpen, setIsOpen, prepareOrder } = useContext(BasketContext)
+    const { isOpen, setIsOpen, prepareOrder, setPrepareOrder } = useContext(BasketContext)
 
-
-    const [orderOfBasket, setOrderOfBasket] = useState<any>()
+    let navigate = useNavigate()
     const [price, setPrice] = useState<number>()
     const [excludedPrice, setExcludedPrice] = useState<number>()
+    const [invoice, setInvoice] = useState<boolean>(false)
 
     useEffect(() => {
-        
+        console.log(prepareOrder);
+    },[])
 
+    
+    // This is useEffect will launch everytime an object product is set to prepareOrder in the provider
+    // It's job is to calculate the price of every product and excluded ingredient
+    useEffect(() => {
+    
         let price = 0;
         let excludedPrice = 0;
         
@@ -48,8 +55,21 @@ export default function BasketModal() {
     if(!isOpen) return null;
 
 
+    // Function Delete Product
+    const deleteProduct = async (product: any) => {        
+        setPrepareOrder((items) =>  items.filter(item => item.product.id !== product));    
+    }
+
+    const deleteIngredientOfProduct = async (ingredientId: any, order: any) => {
+        // console.log(ingredientId, 'id');
+        // console.log(order, 'order');
+        // setPrepareOrder((item) => item.map((el:any) => el.exclude_ingredients).filter((fe: any) => fe.id !== ingredientId.id ))
+        // console.log(prepareOrder);
+        
+    }
 
 
+    // Function To Post the Order once Order exist
     const postOrder = async () => {
         if (prepareOrder.length === 0) return
 
@@ -62,17 +82,25 @@ export default function BasketModal() {
 
     return ReactDOM.createPortal(
         <>
+        
         <div className='modalBasket-main'>
             <div className='modalBasket-order'>
                     {
                         prepareOrder.length > 0  ? prepareOrder.map(order => {
-                            
-
+                            // console.log(order.product.name);
+                            // console.log(order.exclude_ingredients.length);
                             return(
                                 <div key={order.product.id} className='modalBasket-oderChildren'>
                                     <div className='modalBasket-productData'>
                                         <p> Produit : {order.product.name}</p>
-                                        {order.product.custom ? <p></p> : <p>{order.product.price}€</p>}
+                                        {order.product.custom ? <p></p> : 
+                                        <div>
+                                            <p>
+                                                {order.product.price}€    
+                                            </p>
+                                            <p className='deleteProduct-ModalOrder' onClick={() => deleteProduct(order.product.id)}>X</p>
+                                        </div>}
+                                        
                                     </div>
                                     <div>
                                         {   
@@ -82,10 +110,14 @@ export default function BasketModal() {
                                                         <span>Exclude:</span>
                                                         <div className='modalBasket-excludedIngredient-content'>
                                                             {   
-
                                                                 order.exclude_ingredients.map((excludeIngredient: any) => {
                                                                     return(
-                                                                        <p key={excludeIngredient.id}>{excludeIngredient.name}</p>
+                                                                        <div key={excludeIngredient.id}>
+                                                                            <p>
+                                                                                {excludeIngredient.name}   
+                                                                            </p>
+                                                                            <p className='deleteProduct-ModalOrder' onClick={() => deleteIngredientOfProduct(excludeIngredient,order)}>X</p>
+                                                                        </div>
                                                                     )
                                                                 })
                                                             }
@@ -127,9 +159,10 @@ export default function BasketModal() {
                             </div>
                         </div>
                     : <></>}
-             </div>
+            </div>
+            
             {
-                prepareOrder.length > 0 ?<button className='order-modalOrder' onClick={() => postOrder()} >Post Order</button>: <></>
+                prepareOrder.length > 0 ? <button className='order-modalOrder' onClick={() => navigate('/invoice')} > Invoice </button> : <></>
             }
             <button className='clode-modalOrder' onClick={() => setIsOpen(false)} >close</button>
 

@@ -5,6 +5,7 @@ export type setBooleanModalBasket = {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     setOrderProducts: React.Dispatch<React.SetStateAction<{}>>
     prepareOrder: any[]
+    setPrepareOrder: React.Dispatch<React.SetStateAction<any[]>>
 }
 
 

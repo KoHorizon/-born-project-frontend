@@ -10,7 +10,9 @@ const defaultState = {
   handlePrepareOrder: (tempOrder: any) => {},
   prepareOrder: [
     {}
-  ]
+  ],
+  setPrepareOrder: () => {},
+
 }
 
 export const BasketContext = createContext<setBooleanModalBasket >(defaultState);
@@ -18,7 +20,7 @@ export const BasketContext = createContext<setBooleanModalBasket >(defaultState)
 export const ReduxBasketProvider = (props:any) => {
   const [isOpen, setIsOpen] = useState(false)
   const [orderProducts, setOrderProducts] = useState({})
-  const [prepareOrder, setPrepareOrder] = useState<any[]>([])
+  let [prepareOrder, setPrepareOrder] = useState<any[]>([])
 
   useEffect(() => {
     if (Object.keys(orderProducts).length > 0 && orderProducts.constructor === Object) {
@@ -39,7 +41,7 @@ export const ReduxBasketProvider = (props:any) => {
 
 
   return (
-    <BasketContext.Provider value={{ isOpen , setIsOpen , setOrderProducts, prepareOrder}}>
+    <BasketContext.Provider value={{ isOpen , setIsOpen , setOrderProducts, prepareOrder, setPrepareOrder}}>
       {props.children}
     </BasketContext.Provider>
   )

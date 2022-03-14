@@ -9,6 +9,7 @@ import { ReduxProductProvider } from './providers/providerProducts'
 import { ReduxBasketProvider } from './providers/providerBasket'
 import ProductPage from './pages/productPage'
 import { ReduxIngredientProvider } from './providers/providerIngredient'
+import InvoicePage from './pages/invoicePage'
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
 
               <Route element={<ProtectedRoute/>}> 
                     <Route path="/test" element={<MainPage/>} /> 
-                    <Route path="details/product/:id" element={<ProductPage/>} />
+                    <Route path="/details/product/:id" element={<ProductPage/>} />
+                    <Route path="/invoice" element={<InvoicePage/>} />
               </Route>
             </Routes>
           </BrowserRouter>

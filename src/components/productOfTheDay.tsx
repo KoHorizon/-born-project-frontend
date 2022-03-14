@@ -13,7 +13,6 @@ export default function ProductOfTheDay(props: any) {
 
     const addProductToBasketHandler = (dataToAdd:Product) => {
         console.log(dataToAdd);
-        
     }
 
 

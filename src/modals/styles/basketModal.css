@@ -13,13 +13,13 @@
     width: 80%;
     padding: 50px;
     z-index: 1000;
-    border-radius: 50px
+    /* border-radius: 50px */
     /* background-color: black; */
 }
 
-
+/* 
 .modalBasket-order {
-}
+} */
 .modalBasket-productData {
     display: flex;
     justify-content: space-between;
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     width: 100%;
 }
-.modalBasket-excludedIngredient-content> p {
+.modalBasket-excludedIngredient-content> div {
     margin: 0 10px 0 10px;
     border: 2px solid red;
     padding: 10px;
@@ -67,3 +67,11 @@
     top: 20px;
     position: absolute;
 }
+
+.deleteProduct-ModalOrder {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modalBasket-productData {}
