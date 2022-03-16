@@ -27,4 +27,11 @@ export const postOrderHasIngredient = (data: any) : AxiosPromise<any> =>
     });
 
 
+export const postProduct = (data: any) : AxiosPromise<any> => 
+    request({
+        url: 'product-has-ingredient',
+        method: 'POST',
+        data
+    })
+
 // const {data} = await login(loginData);

@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useNavigate } from 'react-router-dom';
 import { postIngredients } from '../../api/ingredient';
 
-export default function CreateExercicePage () {
+export default function CreateIngredient () {
 
 	let navigate = useNavigate()
 
@@ -76,7 +76,7 @@ export default function CreateExercicePage () {
 
     return (
         <Container>
-            <h1>Decrit ta seance :</h1>
+            <h1>Ajoutez des ingredients et leurs informations :</h1>
             <form className={classes.root} onSubmit={handleSubmit}>
                 { inputFields.map((inputField: any,index: any) => (
                     <div key={index}>

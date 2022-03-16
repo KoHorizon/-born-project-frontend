@@ -5,3 +5,7 @@
 .unavailable {
     opacity: 0.5;
 }
+
+.select {
+    margin-top: 10px;
+}
