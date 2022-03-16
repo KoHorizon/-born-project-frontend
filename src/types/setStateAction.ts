@@ -9,3 +9,7 @@ export type setBooleanModalBasket = {
 }
 
 
+
+// export type setUser {
+
+// } 

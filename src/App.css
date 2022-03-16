@@ -1,0 +1,7 @@
+.disabled {
+    display: none;
+}
+
+.unavailable {
+    opacity: 0.5;
+}

@@ -61,14 +61,18 @@ export default function ProductPage(props: any) {
 
     useEffect(() => {
         getProductsAndIngredient(id).then((res) => {
+            console.log(res.data.response.product.availability);
+            
+            if (res.data.response.product.availability == false) {
+                navigate('/home')
+            }
+
             setProduct(res.data.response.product)
             setIngredient(res.data.response.ingredients)
             // console.log(res.data.response.ingredients);
         })
 
-        // console.log(ingredientProvider);
         
-
     },[])
 
     useEffect(() => {
@@ -106,15 +110,18 @@ export default function ProductPage(props: any) {
                     // setOrderProducts(orderObjectCustomize)
                     
                 }
-        navigate('/test')
+        navigate('/home')
     }
 
+    const handleReset = () => {
+        setIngredientToCustomize([])
+    }
 
 
   return ( 
     <>
         <p>ProductPage</p>
-        <button onClick={() => navigate('/test')}>Go back</button>
+        <button onClick={() => navigate('/home')}>Go back</button>
         <ProductAndIngredientData product={product} ingredient={ingredients} ingredientToCustomize={ingredientToCustomize}/>
         <div className='separator'>
             <span>Personnaliser</span>
@@ -136,8 +143,8 @@ export default function ProductPage(props: any) {
                 ingredientProvider.map((ingredientAll: any) => {
                     return (
                         <div key={ingredientAll.id} className='exclude-ingredient'>
-                                <p>{ingredientAll.name}</p>
-                                <span onClick={() => createCustomizeProduct(ingredientAll)}> K </span>
+                                <p>{ingredientAll.name}</p> 
+                                <span onClick={() => createCustomizeProduct(ingredientAll)}> ADD </span>
                         </div>
                     )
                 })
@@ -145,6 +152,7 @@ export default function ProductPage(props: any) {
         </div>
         
         <button onClick={() => handleSubmitToBasket(product.custom)}>Envoyer au panier</button>
+        <button onClick={() => handleReset()}>Reset le produit</button>
 
     </>
   ) 

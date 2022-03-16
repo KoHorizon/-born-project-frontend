@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { getProducts } from '../api/product';
-import ProductAll from '../components/productAll';
+import ProductAll from '../components/product/productAll';
 import ProductOfTheDay from '../components/productOfTheDay';
 import BasketModal from '../modals/basketModal';
 import { BasketContext } from '../providers/providerBasket';

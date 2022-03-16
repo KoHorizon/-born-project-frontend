@@ -6,3 +6,16 @@ export type Order = {
     exclude_ingredients: [Ingredient],
     product: Product
 }
+
+
+
+export type OrderKitchen = {
+    order: number,
+    orderProduct: [OrderContent]
+}
+
+export type OrderContent = {
+    product : Product,
+    ingredient: [Ingredient]
+    excludedIngredient: [Ingredient]
+}

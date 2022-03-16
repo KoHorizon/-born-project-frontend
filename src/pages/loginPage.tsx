@@ -14,14 +14,14 @@ export default function LoginPage() {
     try {
       const {data} = await login(loginData);
       localStorage.setItem('token', data.access_token);
-      navigate('/test')
+      navigate('/home')
     } catch (error) {
       navigate('/login')
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem('token')) navigate('/test')
+    if (localStorage.getItem('token')) navigate('/home')
   },[])
 
   return (
