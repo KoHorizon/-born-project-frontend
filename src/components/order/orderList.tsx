@@ -9,10 +9,10 @@ export default function OrderList() {
         <>
             <div>
                 {
-                    prepareOrder.length > 0  ? prepareOrder.map(order => {
+                    prepareOrder.length > 0  ? prepareOrder.map((order, index) => {
                         
                         return(
-                            <div key={order.product.id} className='modalBasket-oderChildren'>
+                            <div key={index} className='modalBasket-oderChildren'>
                                 <div className='modalBasket-productData'>
                                     <p> Produit : {order.product.name}</p>
                                     {order.product.custom ? <p></p> : <p>{order.product.price}€</p>}

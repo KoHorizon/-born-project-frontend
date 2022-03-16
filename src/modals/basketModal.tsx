@@ -86,11 +86,11 @@ export default function BasketModal() {
         <div className='modalBasket-main'>
             <div className='modalBasket-order'>
                     {
-                        prepareOrder.length > 0  ? prepareOrder.map(order => {
+                        prepareOrder.length > 0  ? prepareOrder.map((order,index) => {
                             // console.log(order.product.name);
                             // console.log(order.exclude_ingredients.length);
                             return(
-                                <div key={order.product.id} className='modalBasket-oderChildren'>
+                                <div key={index} className='modalBasket-oderChildren'>
                                     <div className='modalBasket-productData'>
                                         <p> Produit : {order.product.name}</p>
                                         {order.product.custom ? <p></p> : 
@@ -110,13 +110,13 @@ export default function BasketModal() {
                                                         <span>Exclude:</span>
                                                         <div className='modalBasket-excludedIngredient-content'>
                                                             {   
-                                                                order.exclude_ingredients.map((excludeIngredient: any) => {
+                                                                order.exclude_ingredients.map((excludeIngredient: any, index: any) => {
                                                                     return(
-                                                                        <div key={excludeIngredient.id}>
+                                                                        <div key={index}>
                                                                             <p>
                                                                                 {excludeIngredient.name}   
                                                                             </p>
-                                                                            <p className='deleteProduct-ModalOrder' onClick={() => deleteIngredientOfProduct(excludeIngredient,order)}>X</p>
+                                                                            {/* <p className='deleteProduct-ModalOrder' onClick={() => deleteIngredientOfProduct(excludeIngredient,order)}>X</p> */}
                                                                         </div>
                                                                     )
                                                                 })
@@ -130,12 +130,13 @@ export default function BasketModal() {
                                                     <span> Custom Ingredient :</span>
                                                     <div className='modalBasket-excludedIngredient-content'>
                                                         {  
-                                                            order.ingredients.map((customIngredient: any) => {
+                                                            order.ingredients.map((customIngredient: any , index: any) => {
                                                                 return(
-                                                                    <p key={customIngredient.id}>{customIngredient.name}</p>
+                                                                    <p key={index}>{customIngredient.name}</p>
                                                                 )
                                                             })
                                                         }
+                                                        
                                                     </div>
                                                 </div>
 

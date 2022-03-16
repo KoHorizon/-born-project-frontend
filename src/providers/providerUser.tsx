@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { getUserMe } from '../api/auth';
 import { User } from '../types/user';
 
@@ -11,7 +12,6 @@ const defaultUser = {
 export const UserContext = createContext<User | any>(defaultUser);
 
 export const ReduxUserProvider = (props: any) => {
-
     const [user, setUser] = useState()
     const [role, setRole] = useState()
 
@@ -22,7 +22,7 @@ export const ReduxUserProvider = (props: any) => {
 
             console.log(user, role) 
         
-        })
+        }).catch((err) => localStorage.removeItem("token"))
         
     },[])
     

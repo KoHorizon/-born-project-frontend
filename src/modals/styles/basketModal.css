@@ -15,6 +15,9 @@
     z-index: 1000;
     /* border-radius: 50px */
     /* background-color: black; */
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
 }
 
 /* 
@@ -47,6 +50,13 @@
     border: 2px solid red;
     padding: 10px;
 }
+
+.modalBasket-excludedIngredient-content> p {
+    margin: 0 10px 0 10px;
+    border: 2px solid red;
+    padding: 10px;
+}
+
 
 .modalBasket-finalPrice {
     margin-top: 10px;

@@ -140,11 +140,14 @@ export default function ProductPage(props: any) {
                         )
                     })
                 :
-                ingredientProvider.map((ingredientAll: any) => {
+                ingredientProvider.map((ingredientAll: Ingredient) => {
                     return (
-                        <div key={ingredientAll.id} className='exclude-ingredient'>
+                        <div  key={ingredientAll.id} className={ ingredientAll.stock < 1  ?  'exclude-ingredient unavailable' :'exclude-ingredient'}>
                                 <p>{ingredientAll.name}</p> 
-                                <span onClick={() => createCustomizeProduct(ingredientAll)}> ADD </span>
+                                {ingredientAll.stock > 0 ? 
+                                    <span onClick={() => createCustomizeProduct(ingredientAll)}> ADD </span>                              
+                                    :<></>
+                                }
                         </div>
                     )
                 })
