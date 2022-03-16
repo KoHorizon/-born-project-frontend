@@ -12,6 +12,7 @@ import { ReduxIngredientProvider } from './providers/providerIngredient'
 import InvoicePage from './pages/invoicePage'
 import { ReduxUserProvider } from './providers/providerUser'
 import KitchenPage from './pages/kitchen/kitchenPage'
+import CreateIngredientPage from './pages/admin/createIngredientPage'
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
                     <Route path="/home" element={<MainPage/>} /> 
                     <Route path="/invoice" element={<InvoicePage/>} />
                     <Route path="/kitchen" element={<KitchenPage/>} /> 
+                    <Route path="/admin/ingredient" element={<CreateIngredientPage/>} /> 
+
               </Route>
 
     

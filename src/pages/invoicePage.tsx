@@ -49,17 +49,29 @@ export default function InvoicePage(props: any) {
         if(order.status == 200) { // Make an alert if succesfull
             console.log(order.status, 'order have been created');
         }
+        setPrepareOrder([])
     }
 
     
     return (
-        <>
-            <p>Invoice :</p>
-            <OrderList/>
-            <p>Exclude Price: {excludedPrice}€</p>
-            <p>prix: {price}€</p>
-            <button onClick={() => postOrder()}>Pay</button>
-        </>
+        <div className=''>
+                <p className='invoiceTitle'>Invoice</p>
+            {
+                prepareOrder.length > 0 ?
+                <>
+                    <OrderList/>
+                    <p>Exclude Price: {excludedPrice}€</p>
+                    <p>prix: {price}€</p>
+                    <button onClick={() => postOrder()}>Pay</button>
+                </>
+                :
+                
+                <>
+                <p>Nothing to pay for !</p>
+                </>
+                
+            }
+        </div>
     )
 }
 // prepareOrder.length > 0 ? <button className='order-modalOrder' onClick={() => postOrder()} >Post Order</button> : <></>

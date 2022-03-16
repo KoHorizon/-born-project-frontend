@@ -3,3 +3,12 @@
     width: 200px;
     justify-content: space-evenly;
 }
+
+.invoiceTitle {
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}

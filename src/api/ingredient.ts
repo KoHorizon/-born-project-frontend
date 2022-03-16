@@ -10,3 +10,13 @@ export const getIngredients = (): AxiosPromise<ResponseIngredient> =>
         url: '/ingredients',
         method: 'GET'
     });
+
+
+
+
+    export const postIngredients = (data: any): AxiosPromise<any> =>
+    request({
+        url: '/ingredients',
+        method: 'POST',
+        data
+    });
