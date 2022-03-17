@@ -34,4 +34,17 @@ export const postProduct = (data: any) : AxiosPromise<any> =>
         data
     })
 
-// const {data} = await login(loginData);
+
+
+export const putProduct = (id: any, data: any) : AxiosPromise<any> =>
+    request({
+        url: `/product/${id}`,
+        method: 'PUT',
+        data
+    })
+
+export const deleteProduct = (id: any) : AxiosPromise<any> =>
+    request({
+        url: `/product/${id}`,
+        method: 'GET'
+    })

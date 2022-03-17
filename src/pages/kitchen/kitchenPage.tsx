@@ -12,6 +12,7 @@ export default function KitchenPage() {
       
     });
     // console.log(orderForKitchen)
+    console.log(orderForKitchen,'dsds');
     
 
   },[]) 
@@ -32,7 +33,6 @@ export default function KitchenPage() {
       setOrderForKitchen((order) => order.filter((el: any) => el.order !== id))
     } catch (error) {
       console.log(error);
-      
     }
   }
 
@@ -87,31 +87,16 @@ export default function KitchenPage() {
           )
         })
         :
-        <></>
+        <>
+        </>
 
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {
+        orderForKitchen.length == 0 && 
+        <div className='kitchen-none'>
+          <p>Aucun Order</p>
+        </div>
+      }
     </div>
   )
 }
