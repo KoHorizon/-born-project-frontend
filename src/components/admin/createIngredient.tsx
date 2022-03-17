@@ -35,6 +35,9 @@ export default function CreateIngredient () {
     const handleSubmit = async(e:any) => {
         e.preventDefault();
         try {
+            for await (const iterator of inputFields) {
+                if (iterator.name == '' || iterator.price =='' || iterator.stock == '') return                  
+            }
             const response = await postIngredients(inputFields);
             setInputFields([{ name: '', price: '', stock: ''}])
             console.log(response);
@@ -53,7 +56,6 @@ export default function CreateIngredient () {
     
     const handleRemoveFields = (index:any) => {
     	const values  = [...inputFields];
-    	console.log(index);
     	if (index !== 0) {
             values.splice(index, 1);
     	setInputFields(values);
