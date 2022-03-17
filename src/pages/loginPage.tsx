@@ -14,7 +14,7 @@ export default function LoginPage() {
     try {
       const {data} = await login(loginData);
       localStorage.setItem('token', data.access_token);
-      window.location.replace("http://localhost:3002/home");
+      window.location.replace("http://localhost:3001/home");
       // navigate('/home')
     } catch (error) {
       navigate('/login')

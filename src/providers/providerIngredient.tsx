@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import { getIngredients } from '../api/ingredient';
 import { Ingredient } from '../types/ingredient';
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://127.0.0.1:3002";
+const ENDPOINT = "http://127.0.0.1:3001";
 const defaultIngredient = {
     id: 99999,
     name: 'default',
@@ -23,7 +23,7 @@ export const ReduxIngredientProvider = (props: any) => {
             console.log(content);
             
         });
-        // getIngredients().then((res) => setIngredientProvider(res.data.ingredient));   
+        getIngredients().then((res) => setIngredientProvider(res.data.ingredient));   
 
 
     },[])

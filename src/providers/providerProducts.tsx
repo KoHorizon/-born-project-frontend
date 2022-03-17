@@ -7,7 +7,7 @@ const defaultProduct = {
     name: 'default',
     img_name: 'none',
     availability: false,
-    custom: false,
+    custom: true,
     day_special: false,
     price: 0.00
 };
