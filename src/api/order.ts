@@ -9,3 +9,8 @@ export const getOrderHasProductAndIngredientsUndone = () : AxiosPromise<any> =>
 
 
 
+export const postDeliveredOrder = (id: any) : AxiosPromise<any> =>
+    request({
+        url: `/order/${id}`,
+        method: 'GET',
+    })

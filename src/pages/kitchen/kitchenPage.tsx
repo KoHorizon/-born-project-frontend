@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getOrderHasProductAndIngredientsUndone } from '../../api/order'
+import { getOrderHasProductAndIngredientsUndone, postDeliveredOrder } from '../../api/order'
 import { OrderKitchen } from '../../types/order'
 import '../styles/kitchenPage.css'
 export default function KitchenPage() {
@@ -16,9 +16,9 @@ export default function KitchenPage() {
 
   },[]) 
 
-  const handleOrderFinnished = (id: number) => {
+  const handleOrderFinnished = async (id: number) => {
     console.log(id);
-    
+    const deliverOrder = await postDeliveredOrder(id);
   }
 
 

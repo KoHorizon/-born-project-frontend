@@ -118,6 +118,7 @@ export default function ProductPage(props: any) {
         const ingredient = await getProductsAndIngredient(id);
         setProduct(ingredient.data.response.product)
         setIngredient(ingredient.data.response.ingredients)
+        setExcludeIngredient([])
     }
 
 
