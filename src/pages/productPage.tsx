@@ -113,8 +113,11 @@ export default function ProductPage(props: any) {
         navigate('/home')
     }
 
-    const handleReset = () => {
-        setIngredientToCustomize([])
+    const handleReset = async () => {
+        if ( excludeIngredient.length === 0 )return        
+        const ingredient = await getProductsAndIngredient(id);
+        setProduct(ingredient.data.response.product)
+        setIngredient(ingredient.data.response.ingredients)
     }
 
 
@@ -155,7 +158,12 @@ export default function ProductPage(props: any) {
         </div>
         
         <button onClick={() => handleSubmitToBasket(product.custom)}>Envoyer au panier</button>
-        <button onClick={() => handleReset()}>Reset le produit</button>
+
+        {
+            product.custom == false &&
+                <button onClick={() => handleReset()}>Reset le produit</button>
+        }
+        
 
     </>
   ) 

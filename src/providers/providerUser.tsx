@@ -18,17 +18,14 @@ export const ReduxUserProvider = (props: any) => {
     useEffect(() => {
         getUserMe().then((res) => {
             setUser(res.data.user.name);
-            setRole(res.data.user.role);
-
-            console.log(user, role) 
-        
+            setRole(res.data.user.role);        
         }).catch((err) => localStorage.removeItem("token"))
         
     },[])
     
 
     return (
-        <UserContext.Provider value={{ user, role}}>
+        <UserContext.Provider value={{ user , role}}>
             {props.children}
         </UserContext.Provider>
     )
