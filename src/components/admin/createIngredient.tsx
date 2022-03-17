@@ -40,14 +40,10 @@ export default function CreateIngredient () {
             }
             const response = await postIngredients(inputFields);
             setInputFields([{ name: '', price: '', stock: ''}])
-            console.log(response);
 
         } catch (err){
-            
             console.log(err);
-
         }
-        // console.log(inputFields);
     };
 
     const handleAddFields = () => {

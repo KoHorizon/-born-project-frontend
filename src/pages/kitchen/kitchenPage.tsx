@@ -17,11 +17,24 @@ export default function KitchenPage() {
   },[]) 
 
   const handleOrderFinnished = async (id: number) => {
-    console.log(id);
-    const deliverOrder = await postDeliveredOrder(id);
+    try {
+      const deleteOrderKitchen = await handleOrderDeletionFromKitchen(id);
+      const deliverOrder = await postDeliveredOrder(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
+  const handleOrderDeletionFromKitchen = async (id: number) => {
+    try {
+      if (!id) return    
+      setOrderForKitchen((order) => order.filter((el: any) => el.order !== id))
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
 
 
 
