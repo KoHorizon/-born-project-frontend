@@ -46,3 +46,12 @@
 .btn {
     margin-left: 30px;
 }
+
+.btn-panier {
+    display: flex;
+    width: 360px;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-left: 30px;
+
+}

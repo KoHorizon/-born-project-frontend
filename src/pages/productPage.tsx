@@ -161,12 +161,19 @@ export default function ProductPage(props: any) {
                 })
             }
         </div>
-        
-        <button onClick={() => handleSubmitToBasket(product.custom)}>Envoyer au panier</button>
+        {
+            ingredientToCustomize.length > 0 &&
+                <div className='btn-panier'>
+                    <Button onClick={() => {handleSubmitToBasket(product.custom) }} color="success" variant="contained">Envoyer au panier</Button>
+                </div>
+        }
 
         {
             product.custom == false &&
-                <button onClick={() => handleReset()}>Reset le produit</button>
+            <div className='btn-panier'>
+            <Button onClick={() => {handleSubmitToBasket(product.custom) }} color="success" variant="contained">Envoyer au panier</Button>
+            <Button onClick={() => handleReset()} color="error" variant="contained">Reset le produit</Button>
+            </div>
         }
         
 

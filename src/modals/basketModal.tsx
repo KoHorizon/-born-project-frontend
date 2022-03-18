@@ -60,6 +60,11 @@ export default function BasketModal() {
         setPrepareOrder((items) =>  items.filter(item => item.product.id !== product));    
     }
 
+    const deleteCustomProduct = async (product: any) => {        
+        setPrepareOrder((items) =>  items.filter((item,index) => index !== product));    
+    }
+
+
     const deleteIngredientOfProduct = async (ingredientId: any, order: any) => {
         // console.log(ingredientId, 'id');
         // console.log(order, 'order');
@@ -93,7 +98,9 @@ export default function BasketModal() {
                                 <div key={index} className='modalBasket-oderChildren'>
                                     <div className='modalBasket-productData'>
                                         <p> Produit : {order.product.name}</p>
-                                        {order.product.custom ? <p></p> : 
+                                        {order.product.custom ?
+                                            <p className='deleteProduct-ModalOrder' onClick={() => deleteCustomProduct(index)}>X</p> 
+                                        : 
                                         <div>
                                             <p>
                                                 {order.product.price}€    
@@ -139,10 +146,8 @@ export default function BasketModal() {
                                                         
                                                     </div>
                                                 </div>
-
                                             </div>
                                         }    
-
                                     </div>
                                 </div>
                             )
