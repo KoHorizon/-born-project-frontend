@@ -1,6 +1,6 @@
 .panier {
     position: fixed;
-    bottom: 0;
+    bottom: -170px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -18,9 +18,16 @@
     width: 15%;
     height: 150px;
     background-color: #CEC075;
+    cursor: pointer;
 }
 
 .panier-content > p {
     font-size: 30px;
     letter-spacing: 10px;
+}
+
+
+.panier:hover {
+    bottom: 0px;
+
 }

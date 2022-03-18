@@ -24,7 +24,7 @@ export default function BasketHolder(props: any) {
 
   return (
     <div className='panier'>
-        <div className='panier-content' onClick={() => {props.open(true)}}>
+        <div className='panier-content' onClick={() => {props.open((v:any)=> !v)}}>
             <p>Panier</p>
             <IconButton aria-label="cart">
             <StyledBadge badgeContent={prepareOrder.length} color="primary">

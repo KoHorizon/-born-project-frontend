@@ -35,13 +35,3 @@ export default function MainPage() {
     );
 }
 
-
-
-// product.
-//          filter((productToFilter: Product) => productToFilter.availability === true )
-//          .map((productAvailable:Product) => {
-//             return(
-//                 <ProductOfTheDay key={productAvailable.id} available={productAvailable}/>
-//                 // <p key={elementAvailable.id}>{elementAvailable.name}</p>
-//             )
-//          })
