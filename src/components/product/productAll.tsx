@@ -1,24 +1,35 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Product } from '../../types/product'
+import '../styles/productAllMain.css'
+
+
 const STYLE_AVAILABLE_PRODUCT = {
-    backgroundColor: 'red',
+    backgroundColor: '#F0B67F',
     marginTop: '10px',
     padding: '20px',
-    color: 'white'
+    color: 'white',
+    width: '40%',
+    height: '130px',
+    borderRadius: '10px',
+    cursor: 'pointer' 
 }
 
 const STYLE_UNAVAILABLE_PRODUCT = {
     backgroundColor: 'blue',
+    width: '40%',
     marginTop: '10px',
     padding: '20px',
     color: 'white',
-    opacity: '0.2'
+    opacity: '0.2',
+    height: '130px',
+    borderRadius: '10px',
 }
 
 const STYLE_FLEX= {
     display: 'flex',
-    justifyContent: 'space-between'
+    height: '100%',
+    justifyContent: 'space-between',
 }
 
 const STYLE_DISABLE = {
@@ -34,41 +45,59 @@ export default function ProductAll(props: any) {
 
 
   return (
-    <>
+    <div className='productAll-main'>
     {   
         props.product.map((product: Product) => {
-            // console.log(product,'sdsd');
             
             return(
-            <div key={product.id} style={product.availability ? STYLE_AVAILABLE_PRODUCT : STYLE_UNAVAILABLE_PRODUCT}>
+            <div  className='shadow' onClick={() => product.availability && navigate( `/details/product/${product.id}`) } 
+                key={product.id} style={product.availability ? STYLE_AVAILABLE_PRODUCT : STYLE_UNAVAILABLE_PRODUCT}>
                 {
                 product.availability ? 
-                <div style={STYLE_FLEX}>
+                <div >
                     {
                         product.custom ? 
-                        <>
-                            <p>{product.name}</p>
+                        <>  
+                            <div className='container-ProductAll'>
+                                <div style={STYLE_FLEX}>
+                                    <p>{product.name}</p>
+                                </div>
+                                <div className='img-container-ProductAll'>
+                                    <p>img</p>
+                                </div>
+                            </div>
                         </>
                         :
                         <>
-                            <p>{product.name}</p>
-                            <p>{product.price}€</p>
-                        
+                            <div className='container-ProductAll'>
+                                <div style={STYLE_FLEX}>
+                                    <p className='name-container-ProductAll'>{product.name}</p>
+                                    <p >{product.price}€</p>
+                                </div>
+                                <div className='img-container-ProductAll'>
+                                    <p>img</p>
+                                </div>
+                            </div>
                         </>
                     }
                 </div>
                     :
-                <div style={STYLE_FLEX}>
-                    <p>{product.name}</p>
-                    <p>{product.price}€</p>
+                <div className='container-ProductAll'>
+
+                    <div style={STYLE_FLEX}>
+                        <p>{product.name}</p>
+                    </div>
+                    <div className='img-container-ProductAll'>
+                        <p>img</p>
+                    </div>
                 </div>
+
                 }
-                <button className={ product.availability ? 'active' : 'disabled' } onClick={() => navigate(`/details/product/${product.id}`)}> Go to the Product </button>
             </div>
             )
         })
     }
-    </>
+    </div>
   )
 }
 

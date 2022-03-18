@@ -19,8 +19,13 @@
 }
 
 .image-product {
+    color: white;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
-    width: 40%;
+    width: 500px;
     height: 300px;
     margin-top: 10px;
 }

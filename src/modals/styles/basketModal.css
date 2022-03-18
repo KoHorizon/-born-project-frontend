@@ -15,11 +15,12 @@
     z-index: 1000;
     /* border-radius: 50px */
     /* background-color: black; */
-    overflow-y: scroll;
     scrollbar-color: rebeccapurple green;
     scrollbar-width: thin;
 }
-
+.modalBasket-order {
+    margin-top: 25px;
+}
 /* 
 .modalBasket-order {
 } */
@@ -32,7 +33,6 @@
     padding: 10px;
     border: 1px solid black;
 }
-
 .modalBasket-excludedIngredient {
     margin-top: 10px;
     display: flex;
@@ -73,8 +73,9 @@
 }
 
 
-.clode-modalOrder {
+.close-modalOrder {
     top: 20px;
+    right: 10px;
     position: absolute;
 }
 

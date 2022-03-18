@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { getProducts } from '../api/product';
 import ProductAll from '../components/product/productAll';
 import ProductOfTheDay from '../components/productOfTheDay';
+import BasketHolder from '../components/utils/basketHolder';
 import BasketModal from '../modals/basketModal';
 import { BasketContext } from '../providers/providerBasket';
 import { ProductContext } from '../providers/providerProducts';
@@ -27,7 +28,8 @@ export default function MainPage() {
     return (
         <div>
             <ProductAll product={product}   />
-            <button onClick={() => setIsOpen(true)}>OPEN</button>
+            <BasketHolder open={setIsOpen} />
+            {/* <button onClick={() => setIsOpen(true)}>OPEN</button> */}
             <BasketModal /> 
         </div>
     );

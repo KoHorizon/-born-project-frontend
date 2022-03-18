@@ -50,15 +50,6 @@ export default function MainAdminPage() {
         setOpenCreate(false);
     };
     
-    // const handleCreateProduct = async (value: Omit<Product,'_id' | 'rating' > ) => {
-    //     try {
-    //         const { data } = await createProduct(value); 
-    //         setProducts((items) => [...items, data]);  
-    //         handleCloseCreate();
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
 
 
     const handleEditProduct = async (id: number, value: Omit<Product,'id' | 'availability' | 'img_name' | 'custom' >) => {

@@ -1,0 +1,26 @@
+.panier {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 200px;
+    width: 100%;
+    background-color: #B26E63;
+}
+
+.panier-content {
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 15%;
+    height: 150px;
+    background-color: #CEC075;
+}
+
+.panier-content > p {
+    font-size: 30px;
+    letter-spacing: 10px;
+}

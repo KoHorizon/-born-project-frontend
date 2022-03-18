@@ -9,3 +9,10 @@
 .select {
     margin-top: 10px;
 }
+
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

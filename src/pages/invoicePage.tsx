@@ -65,11 +65,9 @@ export default function InvoicePage(props: any) {
                     <button onClick={() => postOrder()}>Pay</button>
                 </>
                 :
-                
                 <>
-                <p>Nothing to pay for !</p>
+                    <p>Nothing to pay for !</p>
                 </>
-                
             }
         </div>
     )

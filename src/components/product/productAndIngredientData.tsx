@@ -23,7 +23,9 @@ export default function ProductAndIngredientData({product, ingredient, ingredien
 
   return (
     <div style={STYLE_CONTAINER_PRODUCT_INGREDIENT_DATA}>
-        <div className='image-product'></div>
+        <div className='image-product'>
+            <p>image</p>
+        </div>
         <div className='ingredient'>
             {
                 product.custom == false ?

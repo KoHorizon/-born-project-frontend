@@ -4,7 +4,7 @@ import ReactDOM  from 'react-dom';
 import './styles/basketModal.css'
 import { postOrderHasIngredient } from '../api/product';
 import { useNavigate } from 'react-router-dom';
-
+import { Button } from '@mui/material';
 
 
 
@@ -161,11 +161,19 @@ export default function BasketModal() {
                         </div>
                     : <></>}
             </div>
-            
+
             {
-                prepareOrder.length > 0 ? <button className='order-modalOrder' onClick={() => navigate('/invoice')} > Invoice </button> : <></>
+                prepareOrder.length > 0 && <Button  variant="contained" color="success" onClick={() => {navigate('/invoice')}} >
+                Payer
+              </Button>
             }
-            <button className='clode-modalOrder' onClick={() => setIsOpen(false)} >close</button>
+            <div className='close-modalOrder '>
+                <Button variant="outlined" color="error" className='close-modalOrder' onClick={() => setIsOpen(false)}>
+                    Retour
+                </Button>
+
+            </div>
+
 
         </div>
         </>,

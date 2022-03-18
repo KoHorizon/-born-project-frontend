@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductsAndIngredient } from '../api/product';
@@ -28,7 +29,7 @@ const defaultIngredient = {
 
 const STYLE_CONTAINER_CUSTOMIZE = {
     display: 'flex',
-    width:'100%',
+    width:'100%'
 }
 
 export default function ProductPage(props: any) {
@@ -124,15 +125,18 @@ export default function ProductPage(props: any) {
 
   return ( 
     <>
-        <p>ProductPage</p>
-        <button onClick={() => navigate('/home')}>Go back</button>
+        <div className='btn'>
+            <Button variant="outlined" color="error" className='close-modalOrder' onClick={() => navigate('/home')}>
+                        Retour
+            </Button>
+        </div>
         <ProductAndIngredientData product={product} ingredient={ingredients} ingredientToCustomize={ingredientToCustomize}/>
         <div className='separator'>
             <span>Personnaliser</span>
             <div className='separator-line'></div>
         </div>
 
-        <div style={STYLE_CONTAINER_CUSTOMIZE}>
+        <div className='wrap' style={STYLE_CONTAINER_CUSTOMIZE}>
             {
                 product.custom == false ?
                     ingredients.map(ingredient => {
@@ -146,10 +150,10 @@ export default function ProductPage(props: any) {
                 :
                 ingredientProvider.map((ingredientAll: Ingredient) => {
                     return (
-                        <div  key={ingredientAll.id} className={ ingredientAll.stock < 1  ?  'exclude-ingredient unavailable' :'exclude-ingredient'}>
+                        <div  key={ingredientAll.id} className={ ingredientAll.stock < 1  ?  'flex exclude-ingredient unavailable' :'flex exclude-ingredient'}>
                                 <p>{ingredientAll.name}</p> 
                                 {ingredientAll.stock > 0 ? 
-                                    <span onClick={() => createCustomizeProduct(ingredientAll)}> ADD </span>                              
+                                <Button onClick={() => {createCustomizeProduct(ingredientAll) }} variant="contained">Ajouter</Button>
                                     :<></>
                                 }
                         </div>
@@ -169,10 +173,3 @@ export default function ProductPage(props: any) {
     </>
   ) 
 }
-// {
-//     ingredients.map(el => {
-//         return(
-//            <p key={el.id}>{el.name}</p>
-//         )
-//     })  
-// }

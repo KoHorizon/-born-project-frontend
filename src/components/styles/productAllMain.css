@@ -1,0 +1,43 @@
+.productAll-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+
+.container-ProductAll {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 20px;
+   
+    
+}
+
+.img-container-ProductAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #274060;
+    width: 200px;
+    height: 110px;
+}
+
+.name-container-ProductAll {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+.shadow {
+    box-shadow:
+    2.4px 1.9px 2.2px rgba(0, 0, 0, 0.037),
+    5.7px 4.5px 5.3px rgba(0, 0, 0, 0.053),
+    10.8px 8.4px 10px rgba(0, 0, 0, 0.065),
+    19.2px 15px 17.9px rgba(0, 0, 0, 0.077),
+    35.9px 28px 33.4px rgba(0, 0, 0, 0.093),
+    86px 67px 80px rgba(0, 0, 0, 0.13)
+  ;
+}
